@@ -1,0 +1,182 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap'); */
+
+/*Import une font a partir d'un fichier*/
+@font-face {
+    font-family: "Ubuntu";
+    src: url(./asset/fonts/Ubuntu-Regular.ttf);
+}
+
+/* * {
+    margin: 0;
+    padding: 0;
+}
+ */
+
+body {
+    background: url(./asset/img/shoes-2425122.jpg) center/cover;
+    /* vh=viewport height (taille de l'écran d'un appareil) */
+    min-height: 100vh;
+}
+
+h1 {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-align: center;
+    /*Texte en REM pour le responsive*/
+    font-size: 2.5rem;
+    text-shadow: 3px 3px 8px #00000036;
+    color: rgb(8, 33, 255);
+    text-decoration: underline;
+    font-family: "Ubuntu", 'Segoe UI', sans-serif;
+}
+
+main {
+    /* Mettre min-height sinon les éléments interne vont plus loin dans la hauteur */
+    min-height: 500px;
+    width: 90%;
+    background: rgb(165 196 255 / 91%);
+    /* centrer le main  */
+    margin: 0 auto;
+    border: 2px solid rgb(118, 55, 245);
+    border-radius: 20px;
+    box-shadow: -13px -7px 20px 12px #3a00a9c4;
+    padding: 15px;
+}
+
+h2 {
+    margin: 0;
+}
+
+/* Fait en Flexbox */
+.box , .box2{
+    border: 2px solid rgb(255, 0, 221);
+    border-radius: 10px ;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.box ul {
+    padding: 0;
+    display: flex;
+    /* Répartiton équitable */
+    justify-content: space-around;
+}
+
+.box li {
+    border-radius: 10px ;
+    list-style: none;
+    height: 160px;
+    width: 160px;
+    margin: 10px;
+    background:rgb(255, 0, 221);
+    box-shadow: -20px 0px 13px 6px #bf000096;
+
+    /* Centrer élément interne unique */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Fait en Grid */
+
+.box2-container {
+    display: grid;
+    /* Chaque valeur choisi prend la place voulu dans la box. elle est choisi par rapport au parent du container  */
+    grid-template-columns: 30% 70%;
+}
+
+.box2 img{
+    /* Garde l'image pour tous les appareil au valeur donné */
+    width: 80%;
+    margin: 20px auto;
+    display: block;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "i1 i2"
+    "ta ta"
+    "na bt"
+    ;
+}
+
+#name{
+    grid-area: i2;
+    margin-right: 30%;
+    margin-top: 25%;
+}
+
+#firstname{
+    grid-area: i1;
+    margin-left: 15%;
+    margin-top: 25%;
+}
+
+input, textarea{
+    border-radius: 10px ;
+    border: 1px solid blue;
+    font-size: 1rem;
+    font-family: "Ubuntu", 'Segoe UI', sans-serif;
+}
+
+textarea {
+    grid-area: ta;
+    height: 100px;
+    resize: none;
+}
+
+#bouton-submit {
+    border-radius: 0 10px 0 10px ;
+    grid-area: bt;
+    cursor: pointer;
+    background: rgba(82, 190, 82, 0.863);
+    transition: 0.5s;
+}
+
+#bouton-submit:hover {
+    background: darkgreen;
+    color: whitesmoke;
+
+}
+
+/* Media queries pour résponsive */
+
+@media screen and (max-width: 900px) {
+    .box2-container { 
+        display: block;
+    }
+    .box2-container img{
+        width: 40%;
+    }
+
+    #name, #firstname{
+        margin: 10%;
+    }
+    
+}
+
+@media screen and (max-width: 660px) {
+    
+    .box ul{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    form {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: 
+        "i1" 
+        "i2"
+        "ta"
+        "bt";
+    }
+
+    #name, #firstname{
+        margin: 0% 15%;
+    }
+
+}
